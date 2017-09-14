@@ -1,0 +1,59 @@
+HHH   HHH    OOOOOOO    DDDDDDD
+HHH   HHH   OOOOOOOOO   DD    DDD
+HHHHHHHHH   OOO   OOO   DD    DDD
+HHHHHHHHH   OOO   OOO   DD    DDD
+HHH   HHH   OOOOOOOOO   DD    DDD
+HHH   HHH    OOOOOOO    DDDDDDDD
+
+EXTRACTOR v1.00
+
+The assembly bias evolution. Contreras et al. 2017
+_______________________________________________________________________________________________
+The following codes give you the HOD and its fitting parameters for the SAM of Guo et al. 2013.
+
+Any doubt or concern please do not hesitate in contacting me at stcontre@uc.cl
+
+-+/+-/-+/+-/-+/+-/-+/+-/-+/+-/-+/+-/-+/+-/-+/+-/-+/+-/-+/+-/-+/+-/-+/+-/
+
+HOD_Extractor
+
+This code extracts the HOD for a given redshift and number density.
+
+To run:
+> python HOD_Extractor.py  sn_id  nd_id  gp_id  hp_id  index
+
+with:
+
+- sn_id (int) between 0 and 6. The index of the redshift of the sample, with 
+  0 -> z=0, 1-> z=0.5, 1 -> z=1 ... 6 -> z=3
+
+- nd_id (int) between 0 and 5. The index of the number density of the sample, 
+  with 0 -> n= 0.0316, 1 -> n=0.01, 2-> n=0.00316, 3 -> n=0.001, 4 -> n=0.000316, 
+  5-> n=0.0001 h^-3 Mpc^3
+
+- gp_id (int) between 0 and 1. If it is '0', the samples are selected using the 
+  most massive galaxies in stellar mass. if it is '1' the samples are selected using 
+  the galaxies with the highest SFR.
+  
+- hp_id (int) between 0 and 1. If it is '0' we select haloes in function of their 
+  formation redshift. If it is '1' we select haloes in function of their concentration.
+  
+- index (int) between 0 and 10, if it is '0' we use the full galaxy catalogue. If 
+  it is '1' we select the galaxies in the haloes with 10% lowest formation redshift/concentration. 
+  If it is '2' we select the galaxies in the haloes with that have its formation 
+  redshift/concentration between the bottom 10%-20% of the distribution... if it is '9' 
+  we select the galaxies in the haloes with that have its formation redshift/concentration 
+  between the highest 10%-20% of the distribution. If it is '10'we select the galaxies in 
+  the haloes with 10% highest formation redshift/concentration.
+
+The exit of the codes are 5 columns:
+
+- log_Mhalo (float) The logarithm of the mass of the halo, in units of h^-1 Msun.
+
+- <Ngal> (float) The average number of galaxies that populate a halo of a given mass.
+
+- <Ncen> (float) The average number of central galaxies that populate a halo of a given mass.
+
+- <Nsat> (float) The average number of satellite galaxies that populate a halo of a given mass.
+
+- Nhaloes (int) The total number of haloes in this mass bin.
