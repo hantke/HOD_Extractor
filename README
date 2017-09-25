@@ -57,3 +57,55 @@ The exit of the codes are 5 columns:
 - <Nsat> (float) The average number of satellite galaxies that populate a halo of a given mass.
 
 - Nhaloes (int) The total number of haloes in this mass bin.
+
+-+/+-/-+/+-/-+/+-/-+/+-/-+/+-/-+/+-/-+/+-/-+/+-/-+/+-/-+/+-/-+/+-/-+/+-/
+
+Fit_Extractor
+
+This code extracts the fitting parameters of the HOD for a given redshift and number density,
+using the parametrisation introduced by Zheng et al. 2005.
+To run:
+> python HOD_Extractor.py  sn_id  nd_id   hp_id  index
+# Note that this is only for galaxy samples selected by their stellar mass
+
+with:
+
+- sn_id (int) between 0 and 6. The index of the redshift of the sample, with 
+  0 -> z=0, 1-> z=0.5, 1 -> z=1 ... 6 -> z=3
+
+- nd_id (int) between 0 and 5. The index of the number density of the sample, 
+  with 0 -> n= 0.0316, 1 -> n=0.01, 2-> n=0.00316, 3 -> n=0.001, 4 -> n=0.000316, 
+  5-> n=0.0001 h^-3 Mpc^3
+
+- hp_id (int) between 0 and 1. If it is '0' we select haloes in function of their 
+  formation redshift. If it is '1' we select haloes in function of their concentration.
+  
+- index (int) between 0 and 10, if it is '0' we use the full galaxy catalogue. If 
+  it is '1' we select the galaxies in the haloes with 10% lowest formation redshift/concentration. 
+  If it is '2' we select the galaxies in the haloes with that have its formation 
+  redshift/concentration between the bottom 10%-20% of the distribution... if it is '9' 
+  we select the galaxies in the haloes with that have its formation redshift/concentration 
+  between the highest 10%-20% of the distribution. If it is '10'we select the galaxies in 
+  the haloes with 10% highest formation redshift/concentration.
+
+The exit of the codes are 10 columns:
+
+- Mmin, in units of h^-1 Msun
+
+- sigmaLogM
+
+- Mcut, in units of h^-1 Msun
+
+- M1, in units of h^-1 Msun
+
+- alpha
+
+- Err_Mmin
+
+- Err_sigmaLogM
+
+- Err_Mcut
+
+- Err_M1
+
+- Err_alpha
